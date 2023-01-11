@@ -1,0 +1,17 @@
+import { expect } from "chai";
+import { ethers } from "hardhat";
+describe("---BooksToken---", function () {
+  let contract: any;
+  beforeEach(async () => {
+    const BooksToken = await ethers.getContractFactory("BooksToken");
+    contract = await BooksToken.deploy("Books Token " , "BOOKS");
+  }); 
+
+  describe("Get total supply ", () => {
+    it("mint an  nft  ", async function () {
+      await contract.deployed();
+      const mintResponse = await contract.totalSupply();
+      console.log("[Total supply response ]", mintResponse);
+    });
+  });
+});

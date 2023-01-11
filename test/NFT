@@ -1,0 +1,17 @@
+import { expect } from "chai";
+import { ethers } from "hardhat";
+describe("---TravelNFT---", function () {
+  let contract: any;
+  beforeEach(async () => {
+    const TravelNFT = await ethers.getContractFactory("TravelNFT");
+    contract = await TravelNFT.deploy();
+  });
+
+  describe("mintNFT", () => {
+    it("mint an  nft  ", async function () {
+      await contract.deployed();
+      const mintResponse = await contract.mintNFT("0x70997970C51812dc3A010C7d01b50e0d17dc79C8", "para negros");
+      console.log("[Mint response ]", mintResponse);
+    });
+  });
+});
